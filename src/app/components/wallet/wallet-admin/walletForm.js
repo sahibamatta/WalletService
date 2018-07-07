@@ -161,7 +161,11 @@ export class WalletForm extends React.Component {
                 body: JSON.stringify(data)
 
             })
-               
+                .then(function (response) {
+                    var d = response.json()
+                    console.log("response is:" + d)
+                    return d;
+                })
 
                 .then(responseDto => {
                     console.log("then responseDto::" + JSON.stringify(responseDto))
