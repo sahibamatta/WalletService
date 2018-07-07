@@ -8,6 +8,7 @@ import { Login } from "./components/login-logout/login/login";
 import { Logout } from "./components/login-logout/logout/logout";
 import { Wallet } from "./components/wallet/wallet-admin/wallet";
 import { WalletSeller } from "./components/wallet/wallet-seller/walletSeller";
+import { AmountTransfer } from "./components/wallet/amount-transfer/amountTransfer";
 import { Router, Route, browserHistory } from "react-router";
 
 class App extends React.Component {
@@ -83,6 +84,7 @@ class App extends React.Component {
                 <Route path="UpdateUser" components={UpdateUser} onEnter={this.requireAuth} />
                 <Route path="DeleteUser" components={DeleteUser} onEnter={this.requireAuth} />
                 <Route path="Wallet" components={Wallet} onEnter={this.requireAuth} />
+                <Route path="AmountTransferReport" components={AmountTransfer} onEnter={this.requireAuth} />
                 <Route path="BlockedUserReport" components={BlockedUser} onEnter={this.requireAuth} />
                 <Route path="WalletSeller" components={WalletSeller} onEnter={this.requireAuthSeller} />
                 <Route path="Logout" components={Logout} onEnter={this.requireAuth} />

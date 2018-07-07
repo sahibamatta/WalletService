@@ -199,6 +199,27 @@ p {
       margin: 0;
   }
 
+  .termsx {
+
+    overflow-y: scroll;
+  
+    height: 300px;
+  
+    width: 100%;
+  
+    border: 1px solid #DDD;
+  
+    padding: 10px;
+  
+  }
+  .styleTitle {
+    font-size: x-large;
+}
+
+  .styleBody {
+    font-size: small;
+}
+
 
   
   

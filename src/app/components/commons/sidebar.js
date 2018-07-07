@@ -25,6 +25,9 @@ export class SidebarClass extends React.Component {
                         <a href="/Wallet">Wallet</a>
                     </li>
                     <li>
+                        <a href="/AmountTransferReport">Amount Transfer Report</a>
+                    </li>
+                    <li>
                         <a href="/BlockedUserReport">Blocked User Report</a>
                     </li>
 
