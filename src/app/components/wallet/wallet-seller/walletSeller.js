@@ -1,5 +1,5 @@
 import React from "react";
-import { Header } from "../../commons/header";
+import { HeaderSeller } from "../../commons/headerSeller";
 import { WalletSellerForm } from "./walletSellerForm";
 import { Footer } from "../../commons/footer";
 
@@ -11,8 +11,8 @@ export class WalletSeller extends React.Component {
     render() {
         return (
             <div>
-                <Header />
-                <WalletSellerForm/>
+                <HeaderSeller />
+                <WalletSellerForm />
                 <Footer />
             </div>
         );

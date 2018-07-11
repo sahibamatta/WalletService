@@ -7,6 +7,7 @@ const urlForCurrencyConversion = "http://localhost:8080/WalletService/wallet/cur
 const urlForWalletAddresses = "http://localhost:8080/WalletService/wallet/address";
 const urlForTnc = "http://localhost:8080/WalletService/wallet/tnc";
 const urlForTransferAmount = "http://localhost:8080/WalletService/wallet/transfer";
+const urlForTransferFromAddress = "http://localhost:8080/WalletService/wallet/transferFrom";
 let v = "";
 
 export class WalletForm extends React.Component {
@@ -16,7 +17,6 @@ export class WalletForm extends React.Component {
             pyg: "",
             pygDiv: "",
             eth: "",
-            transferFrom: "0xdc4b6479060252156c6423ea7a0233bd98d1479b",
             transferTo: "--Select--",
             transferToDiv: "",
             isTnc: false,
@@ -68,6 +68,26 @@ export class WalletForm extends React.Component {
                     this.setState({
                         title: d.title,
                         body: d.body
+                    })
+
+                }), () => {
+                    this.setState({
+                        requestFailed: true
+                    })
+                }
+            ,
+
+            fetch(urlForTransferFromAddress)
+                .then(response => {
+                    if (!response.ok) {
+                        throw Error("Network request failed");
+                    }
+                    return response.json();
+                })
+                .then(d => {
+                    console.log(d);
+                    this.setState({
+                        transferFrom: d.transferFrom
                     })
 
                 }), () => {
@@ -270,7 +290,8 @@ export class WalletForm extends React.Component {
     render() {
 
         if (this.state.requestFailed) return (<p>Failed...</p>);
-        if (!this.state.walletAddresses || !this.state.title || !this.state.body) return (<p>Loading...</p>);
+        if (!this.state.walletAddresses || !this.state.title || !this.state.body || !this.state.transferFrom)
+            return (<p>Loading...</p>);
         if (!this.state.transferTo) return (<p>Loading...</p>);
 
         return (
@@ -282,6 +303,14 @@ export class WalletForm extends React.Component {
                         <div className="property-form">
                             <h1 className="page-title">Wallet</h1>
 
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <img src={require('../../../html/assets/images/qr_code.png')} />
+                            <br />
+                            <br />
+                            <br />
                             <form>
 
                                 <div className="form-wrap">
@@ -327,8 +356,8 @@ export class WalletForm extends React.Component {
                                             </span></strong></p>
                                         <br />
 
-                                        <p><span className="styleBody">hey whatsup
-                                                {this.state.body}
+                                        <p><span className="styleBody">
+                                            {this.state.body}
                                         </span>
                                         </p> </div></div>
 

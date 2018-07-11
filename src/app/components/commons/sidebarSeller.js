@@ -15,6 +15,10 @@ export class SidebarSeller extends React.Component {
                         <a href="/WalletSeller">Wallet</a>
                     </li>
 
+                    <li>
+                        <a href="/AmountTransferSellerReport">Amount Transfer Report</a>
+                    </li>
+
                 </ul>
             </sidebar>
         );
