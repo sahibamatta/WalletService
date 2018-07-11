@@ -302,6 +302,15 @@ export class WalletSellerForm extends React.Component {
                         <div className="property-form">
                             <h1 className="page-title">Wallet</h1>
 
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <img src={require('../../../html/assets/images/qr_code.png')} />
+                            <br />
+                            <br />
+                            <br />
+
                             <form>
 
                                 <div className="form-wrap">
