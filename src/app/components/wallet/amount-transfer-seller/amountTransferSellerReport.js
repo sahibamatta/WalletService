@@ -120,15 +120,11 @@ export class AmountTransferSellerReport extends React.Component {
             rowsAmount.push(
                 <tr key={i}>
                     <td >{this.state.data[i].date}</td>
-                    <td >{this.state.data[i].transferFrom.substring(0, 25)}<br />
-                        {this.state.data[i].transferFrom.substring(26, this.state.data[i].transferFrom.length)}
-                    </td>
+                    <td >{this.state.data[i].transferFrom}</td>
                     <td>{this.state.data[i].amountPyg}</td>
                     <td>{this.state.data[i].amountEth}</td>
-                    <td>{this.state.data[i].transferTo.substring(0, 25)}<br />
-                        {this.state.data[i].transferFrom.substring(26, this.state.data[i].transferFrom.length)}
-
-                    </td>
+                    <td>{this.state.data[i].transferTo}</td>
+                    <td>{this.state.data[i].reason}</td>
                 </tr >
             );
         }
@@ -143,7 +139,7 @@ export class AmountTransferSellerReport extends React.Component {
                         <div className="property-form">
 
                             <div className="form-wrap">
-                                <label className="form-title">Start Date</label>
+                                <label className="form-title">Del</label>
                                 <input type="date" name="dateFrom" id="dateId" maxLength="100"
                                     value={this.state.dateFrom} onChange={this.onDropdownSelected} />
                                 <div className="error" id="dateFromDivId" data-value=
@@ -151,14 +147,14 @@ export class AmountTransferSellerReport extends React.Component {
                             </div>
 
                             <div className="form-wrap">
-                                <label className="form-title">End Date</label>
+                                <label className="form-title">Al</label>
                                 <input type="date" name="dateTo" id="dateId" maxLength="100"
                                     value={this.state.dateTo} onChange={this.onDropdownSelected} />
                                 <div className="error" id="dateToDivId" data-value=
                                     {this.state.dateToDiv}>{this.state.dateToDiv}</div>
 
                                 <br /><br />
-                                <input type="submit" value="generate report" onClick={(event) => {
+                                <input type="submit" value="GENERAR REPORTE" onClick={(event) => {
                                     if (this.isNotEmptyFieldCheck(event)) {
                                         this.populateAmountTransfersBetweenDates();
                                     }
@@ -174,11 +170,12 @@ export class AmountTransferSellerReport extends React.Component {
                             <table>
                                 <thead>
                                     <tr>
-                                        <th >Date</th>
-                                        <th >Transferred From (Wallet Address)</th>
-                                        <th >Amount in Pyg</th>
-                                        <th >Amount in Eth</th>
-                                        <th >Transferred To (Wallet Address)</th>
+                                        <th >Fecha</th>
+                                        <th >Transferencia desde(Dirección Wallet)</th>
+                                        <th >Monto en PYG</th>
+                                        <th >Monto en ETH</th>
+                                        <th >Transferencia a(Dirección Wallet)</th>
+                                        <th >Motivo</th>
 
                                     </tr>
                                 </thead>

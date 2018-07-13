@@ -16,7 +16,7 @@ export class SidebarSeller extends React.Component {
                     </li>
 
                     <li>
-                        <a href="/AmountTransferSellerReport">Amount Transfer Report</a>
+                        <a href="/AmountTransferSellerReport">Informe de Movimientos</a>
                     </li>
 
                 </ul>

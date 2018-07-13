@@ -25,7 +25,7 @@ export class BlockedUserMetadata extends React.Component {
         }
         this.clearAllFields = this.clearAllFields.bind(this);
         this.populateBlockedUserDetailsDateWise = this.populateBlockedUserDetailsDateWise.bind(this);
-        
+
     }
 
     populateBlockedUserDetailsDateWise(event) {
@@ -94,9 +94,9 @@ export class BlockedUserMetadata extends React.Component {
     render() {
 
         var rows = [];
-        console.log("this.state.data len--"+this.state.data.length)
-        
-        for(var i =0 ;i<this.state.data.length;i++){
+        console.log("this.state.data len--" + this.state.data.length)
+
+        for (var i = 0; i < this.state.data.length; i++) {
             rows.push(
                 <tr key={i}>
                     <td >{this.state.data[i].userId}</td>
@@ -123,23 +123,24 @@ export class BlockedUserMetadata extends React.Component {
                                     {this.state.dateDiv}>{this.state.dateDiv}</div>
                                 <br /><br /><br /><br />
 
+
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th >User Id</th>
+                                            <th >Profile</th>
+                                            <th >IP</th>
+                                            <th >Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {rows}
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th >User Id</th>
-                                <th >Profile</th>
-                                <th >IP</th>
-                                <th >Time</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {rows}
-
-                        </tbody>
-                    </table>
                 </div>
             </div>
 

@@ -8,6 +8,7 @@ const urlForWalletAddresses = "http://localhost:8080/WalletService/wallet/addres
 const urlForTnc = "http://localhost:8080/WalletService/wallet/tnc";
 const urlForTransferAmount = "http://localhost:8080/WalletService/wallet/transfer";
 const urlForTransferFromAddress = "http://localhost:8080/WalletService/wallet/transferFrom";
+const urlForReason = "http://localhost:8080/WalletService/wallet/reason";
 let v = "";
 
 export class WalletSellerForm extends React.Component {
@@ -20,6 +21,8 @@ export class WalletSellerForm extends React.Component {
             transferTo: "--Select--",
             transferToDiv: "",
             isTnc: false,
+            reason: "--Select--",
+            reasonDiv: "",
             isTncDiv: "",
             createDiv: "",
             errorDiv: ""
@@ -31,6 +34,7 @@ export class WalletSellerForm extends React.Component {
         this.onDropdownSelected = this.onDropdownSelected.bind(this);
         this.onCheckboxSelected = this.onCheckboxSelected.bind(this);
         this.transferAmount = this.transferAmount.bind(this);
+        this.populateReasons = this.populateReasons.bind(this);
     }
 
     componentDidMount() {
@@ -56,6 +60,26 @@ export class WalletSellerForm extends React.Component {
                 })
             },
 
+            fetch(urlForReason)
+                .then(response => {
+                    if (!response.ok) {
+                        throw Error("Network request failed");
+                    }
+                    return response.json();
+                })
+                .then(d => {
+                    console.log(d);
+                    this.setState({
+                        reasons: d.reasons,
+                        reason: "--Select--"
+                    })
+
+                }), () => {
+                    this.setState({
+                        requestFailed: true
+                    })
+                },
+
             fetch(urlForTnc)
                 .then(response => {
                     if (!response.ok) {
@@ -74,7 +98,8 @@ export class WalletSellerForm extends React.Component {
                     this.setState({
                         requestFailed: true
                     })
-                },
+                }
+            ,
 
             fetch(urlForTransferFromAddress)
                 .then(response => {
@@ -104,7 +129,9 @@ export class WalletSellerForm extends React.Component {
             pygDiv: "",
             eth: "",
             transferTo: "--Select--",
+            reason: "--Select--",
             transferToDiv: "",
+            reasonDiv: "",
             isTnc: false,
             isTncDiv: "",
             errorDiv: ""
@@ -117,6 +144,7 @@ export class WalletSellerForm extends React.Component {
         this.setState({
             pygDiv: "",
             transferToDiv: "",
+            reasonDiv: "",
             isTncDiv: ""
         })
 
@@ -135,6 +163,14 @@ export class WalletSellerForm extends React.Component {
             })
             return false;
         }
+
+        if (this.state.reason == null || this.state.reason == '--Select--') {
+            this.setState({
+                reasonDiv: "Please select a reason for transfer"
+            })
+            return false;
+        }
+
         if (this.state.isTnc == null || this.state.isTnc == false || this.state.isTnc == '') {
             this.setState({
                 isTncDiv: "Please accept the terms and conditions"
@@ -214,7 +250,8 @@ export class WalletSellerForm extends React.Component {
             "transferFrom": this.state.transferFrom,
             "amountPyg": this.state.pyg,
             "amountEth": this.state.eth,
-            "transferTo": this.state.transferTo
+            "transferTo": this.state.transferTo,
+            "reason": this.state.reason
         }
         console.log("data is::" + data.transferFrom);
 
@@ -278,6 +315,18 @@ export class WalletSellerForm extends React.Component {
 
     }
 
+    populateReasons() {
+
+        const reasonItems = [];
+        console.log('this.state.reason.length is:' + this.state.reasons.length);
+        for (let i = this.state.reasons.length - 1; i >= 0; i--) {
+            reasonItems.push(<option key={i} value={this.state.reasons[i]}>
+                {this.state.reasons[i]}</option>);
+        }
+        return reasonItems;
+
+    }
+
     onCheckboxSelected(event) {
         var checked = event.target.checked
         this.setState({
@@ -289,9 +338,10 @@ export class WalletSellerForm extends React.Component {
     render() {
 
         if (this.state.requestFailed) return (<p>Failed...</p>);
-        if (!this.state.walletAddresses || !this.state.title || !this.state.body || !this.state.transferFrom)
+        if (!this.state.walletAddresses || !this.state.title || !this.state.body || !this.state.transferFrom
+            || !this.state.reasons)
             return (<p>Loading...</p>);
-        if (!this.state.transferTo) return (<p>Loading...</p>);
+        if (!this.state.transferTo || !this.state.reason) return (<p>Loading...</p>);
 
         return (
 
@@ -310,18 +360,17 @@ export class WalletSellerForm extends React.Component {
                             <br />
                             <br />
                             <br />
-
                             <form>
 
                                 <div className="form-wrap">
-                                    <label className="form-title">Transfer From(Wallet Address)</label>
+                                    <label className="form-title">Transferencia desde(Dirección Wallet)</label>
                                     <input type="text" name="transferFrom" id="transferFromId" maxLength="100"
                                         disabled="true" value={this.state.transferFrom}
                                         onChange={this.handleChange} />
                                 </div>
 
                                 <div className="form-wrap">
-                                    <label className="form-title">Enter Amount In PGY</label>
+                                    <label className="form-title">Ingrese Monto PYG</label>
                                     <input type="number" name="pyg" id="pygId" maxLength="100"
                                         value={this.state.pyg} onChange={this.handleChange}
                                         onBlur={this.convertCurrencies} />
@@ -331,14 +380,14 @@ export class WalletSellerForm extends React.Component {
 
 
                                 <div className="form-wrap">
-                                    <label className="form-title">Converted Amount In ETH</label>
+                                    <label className="form-title">Monto convertido en ETH</label>
                                     <input type="number" name="eth" id="ethId" maxLength="100"
                                         disabled="true" value={this.state.eth}
                                         onChange={this.handleChange} />
                                 </div>
 
                                 <div className="form-wrap">
-                                    <label className="form-title">Transfer To (Wallet Address)</label>
+                                    <label className="form-title">Transferencia a(Dirección Wallet)</label>
                                     <select id="transferToId" name="transferTo"
                                         value={this.state.transferTo} onChange={this.onDropdownSelected}>
                                         <option>--Select--</option>
@@ -346,6 +395,17 @@ export class WalletSellerForm extends React.Component {
                                     </select>
                                     <div className="error" id="transferToDivId" data-value=
                                         {this.state.transferToDiv}>{this.state.transferToDiv}</div>
+                                </div>
+
+                                <div className="form-wrap">
+                                    <label className="form-title">Motivo</label>
+                                    <select id="reasonId" name="reason"
+                                        value={this.state.reason} onChange={this.onDropdownSelected}>
+                                        <option>--Select--</option>
+                                        {this.populateReasons()}
+                                    </select>
+                                    <div className="error" id="reasonDivId" data-value=
+                                        {this.state.reasonDiv}>{this.state.reasonDiv}</div>
                                 </div>
 
                                 <div className="form-wrap">
@@ -365,7 +425,7 @@ export class WalletSellerForm extends React.Component {
                                     <input name="isTnc" id="isTncId" type="checkbox"
                                         checked={this.state.isTnc}
                                         onChange={this.onCheckboxSelected} />
-                                    <label className="form-title" >Agree with Terms And Conditions</label>
+                                    <label className="form-title" >Aceptar Términos y Condiciones</label>
                                     <div className="error" id="isTncDivId" data-value=
                                         {this.state.isTncDiv}>{this.state.isTncDiv}</div>
                                 </div>

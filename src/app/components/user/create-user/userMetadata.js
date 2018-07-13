@@ -271,7 +271,7 @@ export class UserMetadata extends React.Component {
 
     validatePassword() {
         console.log("in validatePassword::");
-        
+
         var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
 
         if (strongRegex.test(this.state.password) === false) {
@@ -315,7 +315,7 @@ export class UserMetadata extends React.Component {
 
 
                                 <div className="form-wrap">
-                                    <label className="form-title">First Name</label>
+                                    <label className="form-title">Nombre</label>
                                     <input type="text" name="firstname" id="firstNameId" maxLength="100"
                                         value={this.state.firstname} onChange={this.handleChange} />
                                     <div className="error" id="firstnameDivId" data-value=
@@ -323,7 +323,7 @@ export class UserMetadata extends React.Component {
                                 </div>
 
                                 <div className="form-wrap">
-                                    <label className="form-title">Last Name</label>
+                                    <label className="form-title">Apellido</label>
                                     <input type="text" name="lastname" id="lastNameId" maxLength="100"
                                         value={this.state.lastname} onChange={this.handleChange} />
                                     <div className="error" id="lastnameDivId" data-value=
@@ -331,7 +331,7 @@ export class UserMetadata extends React.Component {
                                 </div>
 
                                 <div className="form-wrap">
-                                    <label className="form-title">Birthday</label>
+                                    <label className="form-title">Fecha de nacimiento</label>
                                     <input type="date" name="birthday" id="birthdayId" maxLength="100"
                                         value={this.state.birthday} onChange={this.handleChange} />
                                     <div className="error" id="birthdayDivId" data-value=
@@ -339,7 +339,7 @@ export class UserMetadata extends React.Component {
                                 </div>
 
                                 <div className="form-wrap">
-                                    <label className="form-title">Phone Number</label>
+                                    <label className="form-title">Teléfono</label>
                                     <input type="number" name="phone" id="phoneId" maxLength="20"
                                         value={this.state.phone} onChange={this.handleChange} />
                                     <div className="error" id="phoneDivId" data-value=
@@ -372,7 +372,7 @@ export class UserMetadata extends React.Component {
                                     <input type="password" name="password" id="passwordId" maxLength="200"
                                         value={this.state.password} onChange={this.handleChange}
                                         onBlur={this.validatePassword} />
-                                <div className="error" id="passwordDivId" data-value=
+                                    <div className="error" id="passwordDivId" data-value=
                                         {this.state.passwordDiv}>{this.state.passwordDiv}</div>
                                 </div>
 
