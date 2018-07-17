@@ -152,7 +152,7 @@ export class WalletSellerForm extends React.Component {
 
         if (this.state.pyg == null || this.state.pyg == '') {
             this.setState({
-                pygDiv: "Please enter amount in pyg"
+                pygDiv: "Por favor ingrese Monto en PYG"
             })
             return false;
         }
@@ -430,7 +430,7 @@ export class WalletSellerForm extends React.Component {
                                         {this.state.isTncDiv}>{this.state.isTncDiv}</div>
                                 </div>
 
-                                <input type="submit" value="transfer" onClick={(event) => {
+                                <input type="submit" value="PROCESAR" onClick={(event) => {
                                     if (this.isNotEmptyFieldCheck(event)) {
                                         this.transferAmount();
                                     }

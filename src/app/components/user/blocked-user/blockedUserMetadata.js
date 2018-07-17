@@ -116,7 +116,7 @@ export class BlockedUserMetadata extends React.Component {
                     <div className="main-content">
                         <div className="property-form">
                             <div className="form-wrap">
-                                <label className="form-title">Date</label>
+                                <label className="form-title">Fecha</label>
                                 <input type="date" name="date" id="dateId" maxLength="100"
                                     value={this.state.date} onChange={this.populateBlockedUserDetailsDateWise} />
                                 <div className="error" id="dateDivId" data-value=
@@ -127,10 +127,10 @@ export class BlockedUserMetadata extends React.Component {
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th >User Id</th>
-                                            <th >Profile</th>
+                                            <th >Usuario Id</th>
+                                            <th >Perfil</th>
                                             <th >IP</th>
-                                            <th >Time</th>
+                                            <th >Hora</th>
                                         </tr>
                                     </thead>
                                     <tbody>

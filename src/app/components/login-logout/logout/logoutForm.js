@@ -18,7 +18,7 @@ export class LogoutForm extends React.Component {
             <div className="login-page">
                 <div className="form">
                     <div className="form-wrap">
-                        <h1>User Logged Out Successfully</h1>
+                        <h1>Usuario desconectado con éxito</h1>
                     </div>
                 </div>
             </div>

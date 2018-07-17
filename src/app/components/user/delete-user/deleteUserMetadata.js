@@ -170,7 +170,7 @@ export class DeleteUserMetadata extends React.Component {
                     <SidebarClass />
                     <div className="main-content">
                         <div className="property-form">
-                            <h1 className="page-title">Delete User</h1>
+                            <h1 className="page-title">Suprimir Usuario</h1>
 
                             <form>
 
@@ -186,7 +186,7 @@ export class DeleteUserMetadata extends React.Component {
                                         {this.state.userDiv}>{this.state.userDiv}</div>
                                 </div>
 
-                                <input type="submit" value="delete" onClick={(event) => {
+                                <input type="submit" value="SUPRIMIR" onClick={(event) => {
                                     if (this.isNotEmptyFieldCheck(event)) {
                                         this.deleteData();
                                     }

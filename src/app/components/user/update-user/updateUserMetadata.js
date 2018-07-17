@@ -390,7 +390,7 @@ export class UpdateUserMetadata extends React.Component {
                     <SidebarClass />
                     <div className="main-content">
                         <div className="property-form">
-                            <h1 className="page-title">Update User</h1>
+                            <h1 className="page-title">Actualizar Usuario</h1>
 
                             <form>
 
@@ -421,7 +421,7 @@ export class UpdateUserMetadata extends React.Component {
                                     <input name="isUserLocked" id="isUserLockedId" type="checkbox"
                                         checked={this.state.isUserLocked}
                                         onChange={this.onCheckboxSelected} />
-                                    <label className="form-title" >Lock User</label>
+                                    <label className="form-title" >Usuario Bloqueado</label>
                                 </div>
 
                                 <br />
@@ -430,7 +430,7 @@ export class UpdateUserMetadata extends React.Component {
                                         checked={this.state.changePassword}
                                         onChange={this.hideUnhideDiv} />
 
-                                    <label className="form-title" >Change Password</label>
+                                    <label className="form-title" >Cambiar Password</label>
                                 </div>
 
 

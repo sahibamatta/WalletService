@@ -146,7 +146,7 @@ export class LoginForm extends React.Component {
 
           <form className="login-form">
             <div className="form-wrap">
-              <input type="text" placeholder="username" name="user" id="userId" maxLength="200"
+              <input type="text" placeholder="usuario" name="user" id="userId" maxLength="200"
                 value={this.state.user} onChange={this.handleChange} />
               <div className="error" id="userDivId" data-value=
                 {this.state.userDiv}>{this.state.userDiv}</div>
@@ -160,7 +160,7 @@ export class LoginForm extends React.Component {
               if (this.isNotEmptyFieldCheck(event)) {
                 this.checkUserData();
               }
-            }}>login</button>
+            }}>INGRESAR</button>
 
             <div className="success" id="createDivId" value={this.state.createDiv}>
               {this.state.createDiv}</div>

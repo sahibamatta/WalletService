@@ -13,13 +13,13 @@ export class SidebarClass extends React.Component {
             <sidebar className="dashboard-link">
                 <ul className="clearfix">
                     <li>
-                        <a href="/CreateUser">Create User</a>
+                        <a href="/CreateUser">CREAR USUARIO</a>
                     </li>
                     <li>
-                        <a href="/UpdateUser">Update User</a>
+                        <a href="/UpdateUser">ACTUALIZAR USUARIO</a>
                     </li>
                     <li>
-                        <a href="/DeleteUser">Delete User</a>
+                        <a href="/DeleteUser">SUPRIMIR USUARIO</a>
                     </li>
                     <li>
                         <a href="/Wallet">Wallet</a>

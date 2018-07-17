@@ -276,7 +276,7 @@ export class UserMetadata extends React.Component {
 
         if (strongRegex.test(this.state.password) === false) {
             console.log("Password is Not Correct");
-            this.setState({ passwordDiv: "Password must be atleast 8 characters long ,contain atleast 1 upper-case , 1 lower-case and 1 special character" })
+            this.setState({ passwordDiv: "Su contraseña debe tener al menos 8 caracteres con letras mayúsculas, minúsculas, números y un carácter especial." })
             return false;
         }
         else {
@@ -301,7 +301,7 @@ export class UserMetadata extends React.Component {
                     <SidebarClass />
                     <div className="main-content">
                         <div className="property-form">
-                            <h1 className="page-title">Create User</h1>
+                            <h1 className="page-title">Crear Usuario</h1>
 
                             <form>
 
@@ -384,7 +384,7 @@ export class UserMetadata extends React.Component {
                                         {this.state.confirmPasswordDiv}>{this.state.confirmPasswordDiv}</div>
                                 </div>
 
-                                <input type="submit" value="create" onClick={(event) => {
+                                <input type="submit" value="CREAR" onClick={(event) => {
                                     if (this.isNotEmptyFieldCheck(event)) {
                                         if (this.validateEmail() && this.validatePassword())
                                             this.submitData();

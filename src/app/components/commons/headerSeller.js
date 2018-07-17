@@ -44,7 +44,7 @@ export class HeaderSeller extends React.Component {
                         <a className="brands">{this.state.header}</a>
                         <nav className="dashboard-nav">
                             <ul className="clearfix">
-                                <li> <a href="/LogoutSeller"> Logout</a></li>
+                                <li> <a href="/LogoutSeller"> Salir</a></li>
                             </ul>
                         </nav>
                     </div>
